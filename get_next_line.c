@@ -6,7 +6,7 @@
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 21:15:27 by viroques          #+#    #+#             */
-/*   Updated: 2019/11/12 22:21:53 by viroques         ###   ########.fr       */
+/*   Updated: 2019/11/12 23:51:27 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		str[i] = s1[i];
 		i++;
 	}
-	while (s2[j])
+	while (s2[j] && s2[j] != '\n')
 	{
 		str[i] = s2[j];
 		i++;
@@ -37,17 +37,38 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (str);
 }
 
+char	*ft_strchr(const char *s, int c)
+{
+	char *p;
+
+	p = (char *)s;
+	while (*p != '\0')
+	{
+		if (*p == c)
+			return (p);
+		p++;
+	}
+	if (*p == c)
+		return (p);
+	return (0);
+}
+
 int		get_next_line(int fd, char **line)
 {
-	char buff[BUFF_SIZE + 1];
+	char buff[BUFFER_SIZE + 1];
 	int ret;
 	int i;
+	char *tmp;
 
 	i = 0;
-	ret = read(fd, buff, BUFF_SIZE);
-	buff[ret] = '\0';
-	*line = ft_strjoin(*line, buff);
-	if (ret > 0)
+	while ((ret = read(fd, buff, BUFFER_SIZE)))
+	{
+		buff[ret] = '\0';
+		*line = ft_strjoin(*line, buff);
+	}
+	if (ft_strchr(buff, '\n') != NULL)
 		return (1);
+	if (ft_strchr(buff, '\0') != NULL)
+		return (0);
 	return (0);
 }

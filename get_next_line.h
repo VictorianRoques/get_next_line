@@ -6,7 +6,7 @@
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 21:18:30 by viroques          #+#    #+#             */
-/*   Updated: 2019/11/12 21:06:14 by viroques         ###   ########.fr       */
+/*   Updated: 2019/11/12 23:14:37 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <string.h>
-# define BUFF_SIZE 10
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
 int		get_next_line(int fd, char **line);
 size_t	ft_strlen(const char *s);
 #endif

@@ -6,7 +6,7 @@
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 21:26:26 by viroques          #+#    #+#             */
-/*   Updated: 2019/11/12 22:20:16 by viroques         ###   ########.fr       */
+/*   Updated: 2019/11/12 23:51:08 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int		main()
 	int ret;
 	char *line;
 
-	fd = open("test.txt", O_RDONLY);
+	fd = open("backn.txt", O_RDONLY);
 	get_next_line(fd, &line);
-	write(1, line, BUFF_SIZE);
+	write(1, line, ft_strlen(line));
 	// while (get_next_line(fd, &line))
 	// 	write(1, line, BUFF_SIZE);
 	close(fd);
