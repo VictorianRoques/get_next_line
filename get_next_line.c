@@ -50,11 +50,11 @@ int		ft_strnchr(const char *s, int c, int n)
 	while (s[i] != '\0' && i < n)
 	{
 		if (s[i] == c)
-			return (s + i);
+			return (&s[i]);
 		s++;
 	}
 	if (s[i] == c)
-		return (s + i);
+		return (&s[i]);
 	return (0);
 }
 
