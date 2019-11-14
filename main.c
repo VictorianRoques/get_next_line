@@ -6,10 +6,11 @@
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 21:26:26 by viroques          #+#    #+#             */
-/*   Updated: 2019/11/12 23:51:08 by viroques         ###   ########.fr       */
+/*   Updated: 2019/11/14 21:21:03 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "get_next_line.h"
 
 int		main()
@@ -18,10 +19,13 @@ int		main()
 	int ret;
 	char *line;
 
-	fd = open("backn.txt", O_RDONLY);
-	get_next_line(fd, &line);
-	write(1, line, ft_strlen(line));
-	// while (get_next_line(fd, &line))
-	// 	write(1, line, BUFF_SIZE);
+	fd = open("test", O_RDONLY);
+	while ((ret = get_next_line(fd, &line)) > 0)
+	{
+		printf("[%d] %s\n", ret, line);
+		free(line);
+	}
+	printf("[%d] %s\n",ret , line);
+	free(line);
 	close(fd);
 }
