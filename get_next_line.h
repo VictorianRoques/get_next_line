@@ -6,7 +6,7 @@
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 21:18:30 by viroques          #+#    #+#             */
-/*   Updated: 2019/11/18 20:09:38 by viroques         ###   ########.fr       */
+/*   Updated: 2019/11/18 21:45:53 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <string.h>
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000000
-# endif
+# define BUFFER_SIZE 1000000
 # define OPEN_MAX 10240
 
 int		get_next_line(int fd, char **line);

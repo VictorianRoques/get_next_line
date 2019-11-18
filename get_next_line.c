@@ -6,12 +6,11 @@
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 21:15:27 by viroques          #+#    #+#             */
-/*   Updated: 2019/11/18 21:06:28 by viroques         ###   ########.fr       */
+/*   Updated: 2019/11/18 21:45:33 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 static void		ft_cutncpy_stock(char **stock)
 {
