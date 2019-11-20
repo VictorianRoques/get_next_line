@@ -6,7 +6,7 @@
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 21:15:27 by viroques          #+#    #+#             */
-/*   Updated: 2019/11/18 22:52:42 by viroques         ###   ########.fr       */
+/*   Updated: 2019/11/20 21:31:13 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,7 @@ int				get_next_line(int fd, char **line)
 	char			buff[BUFFER_SIZE + 1];
 	static char		*stock[OPEN_MAX];
 	int				read_bytes;
-	int				i;
 
-	i = 0;
 	if (fd < 0 || !line || fd > OPEN_MAX || BUFFER_SIZE <= 0)
 		return (-1);
 	if (!stock[fd])
