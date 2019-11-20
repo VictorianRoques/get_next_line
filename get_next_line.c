@@ -6,7 +6,7 @@
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 21:15:27 by viroques          #+#    #+#             */
-/*   Updated: 2019/11/20 21:31:13 by viroques         ###   ########.fr       */
+/*   Updated: 2019/11/21 00:27:30 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,11 @@ static int		ft_readnstock(int fd, char *buff, char **stock)
 	while ((read_bytes = read(fd, buff, BUFFER_SIZE))
 			&& !ft_strnchr(buff, '\n', BUFFER_SIZE))
 	{
-		if (read_bytes == -1)
-			return (-1);
 		buff[read_bytes] = '\0';
 		tmp = *stock;
 		*stock = ft_strjoin(tmp, buff);
 		free(tmp);
 	}
-	if (read_bytes == -1)
-		return (-1);
 	buff[read_bytes] = '\0';
 	tmp = *stock;
 	*stock = ft_strjoin(tmp, buff);
@@ -64,7 +60,7 @@ int				get_next_line(int fd, char **line)
 	static char		*stock[OPEN_MAX];
 	int				read_bytes;
 
-	if (fd < 0 || !line || fd > OPEN_MAX || BUFFER_SIZE <= 0)
+	if (read(fd, NULL, 0) < 0 || !line || BUFFER_SIZE <= 0)
 		return (-1);
 	if (!stock[fd])
 	{
@@ -78,9 +74,9 @@ int				get_next_line(int fd, char **line)
 		return (-1);
 	}
 	*line = ft_strndup(stock[fd]);
-	if (!ft_strnchr(stock[fd], '\n', ft_strlen(stock[fd])) && read_bytes == 0)
+	if (!ft_strnchr(stock[fd], '\n', ft_strlen(stock[fd])))
 	{
-		free(stock[fd]);
+		stock[fd] = NULL;
 		return (0);
 	}
 	ft_cutncpy_stock(&stock[fd]);
