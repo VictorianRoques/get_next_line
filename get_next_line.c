@@ -6,7 +6,7 @@
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 21:15:27 by viroques          #+#    #+#             */
-/*   Updated: 2019/11/21 00:27:30 by viroques         ###   ########.fr       */
+/*   Updated: 2019/11/23 15:26:07 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static void		ft_cutncpy_stock(char **stock)
 		}
 		i++;
 	}
-	tmp = *stock;
-	*stock = ft_substr(tmp, i, ft_strlen(tmp));
-	free(tmp);
+	tmp = ft_substr(*stock, i, ft_strlen(*stock));
+	free(*stock);
+	*stock = tmp;
 }
 
 static int		ft_readnstock(int fd, char *buff, char **stock)
@@ -43,14 +43,14 @@ static int		ft_readnstock(int fd, char *buff, char **stock)
 			&& !ft_strnchr(buff, '\n', BUFFER_SIZE))
 	{
 		buff[read_bytes] = '\0';
-		tmp = *stock;
-		*stock = ft_strjoin(tmp, buff);
-		free(tmp);
+		tmp = ft_strjoin(*stock, buff);
+		free(*stock);
+		*stock = tmp;
 	}
 	buff[read_bytes] = '\0';
-	tmp = *stock;
-	*stock = ft_strjoin(tmp, buff);
-	free(tmp);
+	tmp = ft_strjoin(*stock, buff);
+	free(*stock);
+	*stock = tmp;
 	return (read_bytes);
 }
 
