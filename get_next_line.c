@@ -6,7 +6,7 @@
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 21:15:27 by viroques          #+#    #+#             */
-/*   Updated: 2019/11/23 15:26:07 by viroques         ###   ########.fr       */
+/*   Updated: 2019/11/23 17:32:36 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int				get_next_line(int fd, char **line)
 	*line = ft_strndup(stock[fd]);
 	if (!ft_strnchr(stock[fd], '\n', ft_strlen(stock[fd])))
 	{
-		stock[fd] = NULL;
+		stock[fd][0] = '\0';
 		return (0);
 	}
 	ft_cutncpy_stock(&stock[fd]);
