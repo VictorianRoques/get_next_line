@@ -6,28 +6,23 @@
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 20:32:35 by viroques          #+#    #+#             */
-/*   Updated: 2019/11/18 21:28:20 by viroques         ###   ########.fr       */
+/*   Updated: 2019/11/25 21:01:10 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t		ft_strlen(const char *s)
+size_t		ft_strlen(char *s)
 {
-	size_t	size;
-	int		i;
+	size_t	i;
 
 	i = 0;
-	size = 0;
 	while (s[i])
-	{
-		size++;
 		i++;
-	}
-	return (size);
+	return (i);
 }
 
-char		*ft_strjoin(char *s1, char const *s2)
+char		*ft_strjoin(char *s1, char *s2)
 {
 	size_t	i;
 	size_t	j;
@@ -35,6 +30,8 @@ char		*ft_strjoin(char *s1, char const *s2)
 
 	i = 0;
 	j = 0;
+	if (!s1 || !s2)
+		return (NULL);
 	if (!(str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1))))
 		return (NULL);
 	while (s1[i])
@@ -68,15 +65,15 @@ char		*ft_strnchr(char *s, int c, int n)
 	return (NULL);
 }
 
-char		*ft_strndup(const char *s)
+char		*ft_strndup(char *s)
 {
 	char	*str;
 	int		i;
 
 	i = 0;
-	if (!(str = malloc(sizeof(char) * (ft_strlen(s) + 1))))
+	if (!(str = malloc(sizeof(char) * ft_strlen(s) + 1)))
 		return (NULL);
-	while (s[i] != '\0' && s[i] != '\n')
+	while (s[i] && s[i] != '\n')
 	{
 		str[i] = s[i];
 		i++;
@@ -85,7 +82,7 @@ char		*ft_strndup(const char *s)
 	return (str);
 }
 
-char		*ft_substr(char const *s, unsigned int start, size_t len)
+char		*ft_substr(char *s, unsigned int start, size_t len)
 {
 	size_t			i;
 	char			*str;
